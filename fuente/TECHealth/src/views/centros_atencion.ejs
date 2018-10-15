@@ -1,0 +1,64 @@
+<%include partials/_header%>
+    <div class="container">
+      <h1 class="k2d">Centro de Atención</h1>
+      <div class="row">
+        <!--FORM-->
+        <div class="col-md-7">
+          <p>Completa la información</p>
+          <div class="card">
+            <div class="card-body">
+              <form action="/addcentro" method="POST">
+                <div class="form-group">
+                  <input type="number" name="codigo_centro" placeholder="Código" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="nombre_centro" placeholder="Nombre" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="lugar_centro" placeholder="Lugar" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="number" name="cap_max_centro" placeholder="Capacidad Máxima" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="tipo_centro" placeholder="Tipo" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin: 10px 10px">Agregar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!--TABLA-->
+        <div class="col-md-7">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Lugar</th>
+                <th>Capacidad Máxima</th>
+                <th>Tipo</th>
+                <th>Operaciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i=0; i<centros.length; i++) {%>
+                <tr>
+                  <td><%= centros[i].Codigo%></td>
+                  <td><%= centros[i].Nombre%></td>
+                  <td><%= centros[i].Lugar%></td>
+                  <td><%= centros[i].Capacidad_Maxima%></td>
+                  <td><%= centros[i].Tipo_centro%></td>
+                  <td>
+                    <a href="/eliminarcentro/<%= centros[i]._id%>" class="btn btn-danger">Eliminar</a>
+                    <a href="/editarcentro/<%= centros[i]._id%>" class="btn btn-info">Actualizar</a>
+                  </td>
+                </tr>
+
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+<%include partials/_footer%>

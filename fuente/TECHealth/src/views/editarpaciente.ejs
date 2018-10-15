@@ -1,0 +1,53 @@
+<%include partials/_header2%>
+    <div class="container">
+      <h1 class="k2d">Paciente</h1>
+      <div class="row">
+        <!--FORM-->
+        <div class="col-md-7">
+          <p>Completa la información</p>
+          <div class="card">
+            <div class="card-body">
+              <form action="/editarpaciente/<%= paciente_edit._id%>" method="POST">
+                <div class="form-group">
+                  <input type="number" name="cedula_paciente" placeholder="Cédula" class="form-control"
+                  value="<%= paciente_edit.Identificacion%>">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="nombre_paciente" placeholder="Nombre" class="form-control"
+                  value="<%= paciente_edit.Nombre%>">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="apellidop_paciente" placeholder="Apellido Paterno" class="form-control"
+                  value="<%= paciente_edit.Apellido_paterno%>">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="apellidom_paciente" placeholder="Apellido Materno" class="form-control"
+                  value="<%= paciente_edit.Apellido_materno%>">
+                </div>
+                <div class="form-group">
+                  <input type="date" name="fecha_nacimiento_paciente" placeholder="Fecha de Nacimiento" class="form-control"
+                  value="<%= paciente_edit.Fecha_nacimiento%>">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="tipo_sangre_paciente" placeholder="Tipo Sangre" class="form-control"
+                  value="<%= paciente_edit.Tipo_sangre%>">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="nacionalidad_paciente" placeholder="Nacionalidad" class="form-control"
+                  value="<%= paciente_edit.Nacionalidad%>">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="residencia_paciente" placeholder="Lugar de Residencia" class="form-control"
+                  value="<%= paciente_edit.Lugar_residencia%>">
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name=telefonos_paciente placeholder="Teléfonos: separelas con con coma"><%= paciente_edit.Telefonos%></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin: 10px 10px">Actualizar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<%include partials/_footer%>

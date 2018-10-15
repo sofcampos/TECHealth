@@ -1,0 +1,35 @@
+<%include partials/_header2%>
+    <div class="container">
+      <h1 class="k2d">Enfermedad</h1>
+      <div class="row">
+        <!--FORM-->
+        <div class="col-md-7">
+          <p>Completa la información</p>
+          <div class="card">
+            <div class="card-body">
+              <form action="/editarenfermedad/<%= enfermedad_edit._id%>" method="POST">
+                <div class="form-group">
+                  <input type="number" name="id_enfermedad" placeholder="Identificación" class="form-control"
+                  value="<%= enfermedad_edit.Identificacion%>">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="nombre_enfermedad" placeholder="Nombre" class="form-control"
+                  value="<%= enfermedad_edit.Nombre%>">
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name=descripcion_enfermedad placeholder="Descripción"><%= enfermedad_edit.Descripcion%></textarea>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name=sintomas_enfermedad placeholder="Sintomas: separelas con coma"><%= enfermedad_edit.Sintomas%></textarea>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name=tratamiento_enfermedad placeholder="Tratamientos: separelas con con coma"><%= enfermedad_edit.Tratamiento%></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin: 10px 10px">Actualizar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<%include partials/_footer%>

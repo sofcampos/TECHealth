@@ -1,0 +1,78 @@
+<%include partials/_header%>
+    <div class="container">
+      <h1 class="k2d">Funcionarios</h1>
+      <div class="row">
+        <!--FORM-->
+        <div class="col-md-7">
+          <p>Completa la información</p>
+          <div class="card">
+            <div class="card-body">
+              <form action="/addfuncionario" method="POST">
+                <div class="form-group">
+                  <input type="number" name="cedula_funcionario" placeholder="Cédula" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="nombre_funcionario" placeholder="Nombre" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="apellidop_funcionario" placeholder="Apellido Paterno" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="apellidom_funcionario" placeholder="Apellido Materno" class="form-control">
+                </div>
+                <div class="form-group">
+                  <select class="form-control" name="tipo_funcionario"  placeholder="Tipo">
+                    <option>Doctor(a)</option>
+                    <option>Enfermer(a/o)</option>
+                    <option>Secretari(a/o)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <input type="date" name="fecha_ingreso_funcionario" placeholder="Fecha Ingreso" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="area_funcionario" placeholder="Área" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin: 10px 10px">Agregar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!--TABLA-->
+        <div class="col-md-7">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Cédula</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Tipo</th>
+                <th>Fecha Ingreso</th>
+                <th>Área</th>
+                <th>Operaciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i=0; i<funcionarios.length; i++) {%>
+                <tr>
+                  <td><%= funcionarios[i].Cedula%></td>
+                  <td><%= funcionarios[i].Nombre%></td>
+                  <td><%= funcionarios[i].Apellido_paterno%></td>
+                  <td><%= funcionarios[i].Apellido_materno%></td>
+                  <td><%= funcionarios[i].Tipo_funcionario%></td>
+                  <td><%= funcionarios[i].Fecha_ingreso%></td>
+                  <td><%= funcionarios[i].Area_trabajo%></td>
+                  <td>
+                    <a href="/eliminarfuncionario/<%= funcionarios[i]._id%>" class="btn btn-danger">Eliminar</a>
+                    <a href="/editarfuncionario/<%= funcionarios[i]._id%>" class="btn btn-info">Actualizar</a>
+                  </td>
+                </tr>
+
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+<%include partials/_footer%>

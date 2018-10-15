@@ -1,0 +1,64 @@
+<%include partials/_header%>
+    <div class="container">
+      <h1 class="k2d">Tratamiento</h1>
+      <div class="row">
+        <!--FORM-->
+        <div class="col-md-7">
+          <p>Completa la información</p>
+          <div class="card">
+            <div class="card-body">
+              <form action="/addtratamiento" method="POST">
+                <div class="form-group">
+                  <input type="number" name="id_tratamiento" placeholder="Identificación" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="nombre_tratamiento" placeholder="Nombre" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="tipo_tratamiento" placeholder="Tipo" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="number" name="cant_unidades_tratamiento" placeholder="Cantidad de Unidades" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="number" name="monto_tratamiento" placeholder="Monto" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin: 10px 10px">Agregar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!--TABLA-->
+        <div class="col-md-7">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Identificación</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Cantidad de Unidades</th>
+                <th>Monto</th>
+                <th>Operaciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i=0; i<tratamientos.length; i++) {%>
+                <tr>
+                  <td><%= tratamientos[i].Identificacion%></td>
+                  <td><%= tratamientos[i].Nombre%></td>
+                  <td><%= tratamientos[i].Tipo%></td>
+                  <td><%= tratamientos[i].Cant_unidades%></td>
+                  <td><%= tratamientos[i].Monto_tratamiento%></td>
+                  <td>
+                    <a href="/eliminartratamiento/<%= tratamientos[i]._id%>" class="btn btn-danger">Eliminar</a>
+                    <a href="/editartratamiento/<%= tratamientos[i]._id%>" class="btn btn-info">Actualizar</a>
+                  </td>
+                </tr>
+
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+<%include partials/_footer%>

@@ -1,0 +1,84 @@
+<%include partials/_header%>
+    <div class="container">
+      <h1 class="k2d">Paciente</h1>
+      <div class="row">
+        <!--FORM-->
+        <div class="col-md-7">
+          <p>Completa la información</p>
+          <div class="card">
+            <div class="card-body">
+              <form action="/addpaciente" method="POST">
+                <div class="form-group">
+                  <input type="number" name="cedula_paciente" placeholder="Cédula" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="nombre_paciente" placeholder="Nombre" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="apellidop_paciente" placeholder="Apellido Paterno" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="apellidom_paciente" placeholder="Apellido Materno" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="date" name="fecha_nacimiento_paciente" placeholder="Fecha de Nacimiento" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="tipo_sangre_paciente" placeholder="Tipo Sangre" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="nacionalidad_paciente" placeholder="Nacionalidad" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="residencia_paciente" placeholder="Lugar de Residencia" class="form-control">
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name=telefonos_paciente placeholder="Teléfonos: separelas con con coma"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin: 10px 10px">Agregar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!--TABLA-->
+        <div class="col-md-7">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Cédula</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Tipo de Sangre</th>
+                <th>Nacionalidad</th>
+                <th>Lugra de Residencia</th>
+                <th>Teléfonos</th>
+                <th>Operaciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i=0; i<pacientes.length; i++) {%>
+                <tr>
+                  <td><%= pacientes[i].Identificacion%></td>
+                  <td><%= pacientes[i].Nombre%></td>
+                  <td><%= pacientes[i].Apellido_paterno%></td>
+                  <td><%= pacientes[i].Apellido_materno%></td>
+                  <td><%= pacientes[i].Fecha_nacimiento%></td>
+                  <td><%= pacientes[i].Tipo_sangre%></td>
+                  <td><%= pacientes[i].Nacionalidad%></td>
+                  <td><%= pacientes[i].Lugar_residencia%></td>
+                  <td><%= pacientes[i].Telefonos%></td>
+                  <td>
+                    <a href="/eliminarpaciente/<%= pacientes[i]._id%>" class="btn btn-danger">Eliminar</a>
+                    <a href="/editarpaciente/<%= pacientes[i]._id%>" class="btn btn-info">Actualizar</a>
+                  </td>
+                </tr>
+
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+<%include partials/_footer%>

@@ -1,0 +1,38 @@
+<%include partials/_header%>
+    <div class="container">
+      <h1 class="k2d">Centro de Atención</h1>
+      <div class="row">
+        <!--FORM-->
+        <div class="col-md-7">
+          <p>Completa la información</p>
+          <div class="card">
+            <div class="card-body">
+              <form action="/editarcentro/<%= centro_edit._id%>" method="POST">
+                <div class="form-group">
+                  <input type="number" name="codigo_centro" placeholder="Código" class="form-control"
+                  value="<%= centro_edit.Codigo%>">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="nombre_centro" placeholder="Nombre" class="form-control"
+                  value="<%= centro_edit.Nombre%>">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="lugar_centro" placeholder="Lugar" class="form-control"
+                  value="<%= centro_edit.Lugar%>">
+                </div>
+                <div class="form-group">
+                  <input type="number" name="cap_max_centro" placeholder="Capacidad Máxima" class="form-control"
+                  value="<%= centro_edit.Capacidad_Maxima%>">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="tipo_centro" placeholder="Tipo" class="form-control"
+                    value="<%= centro_edit.Tipo_centro%>">
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin: 10px 10px">Actualizar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<%include partials/_footer%>
