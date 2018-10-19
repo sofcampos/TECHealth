@@ -265,120 +265,15 @@ router.post('/editarpaciente/:id',async (req,res)=>{
   res.redirect('/pacientes');
 });
 /*CONSULTAS*/
-
-/*Consulta A*/
-router.get('/consultaa',async(req,res)=>{
-  const pelis=await pelicula.find();
-  const resultado={};
-  res.render('consultaa',{
-    pelis,resultado
-  });
-});
-router.post('/consultaa',async(req,res)=>{
-  const titulo_seleccionado_string=req.body.titulo_seleccionado;
-  const pelis=await pelicula.find();
-  const resultado=await pelicula.find({Nombre:titulo_seleccionado_string});
-  res.render('consultaa',{
-    pelis,resultado
-  });
+/*CITAS*/
+router.get('/citaspaciente',(req,res)=>{
+  res.render('citas_paciente');
 });
 
-/*Consulta B*/
-router.get('/consultab',async(req,res)=>{
-  const pelis=await pelicula.find();
-  const resultado={};
-  res.render('consultab',{
-    pelis,resultado
-  });
+router.get('/atendercita',(req,res)=>{
+  res.render('atender_cita');
 });
-router.post('/consultab',async(req,res)=>{
-  const franquicia_seleccionada_string=req.body.franquicia_seleccionada;
-  const pelis=await pelicula.find();
-  const resultado=await pelicula.find({Franquicia:franquicia_seleccionada_string});
-  res.render('consultab',{
-    pelis,resultado
-  });
+router.get('/gestioncita',(req,res)=>{
+  res.render('citas_secretaria');
 });
-
-/*Consulta C*/
-router.get('/consultac',async(req,res)=>{
-  const resultado={};
-  res.render('consultac',{
-    resultado
-  });
-});
-router.post('/consultac',async(req,res)=>{
-  const fechaIni=req.body.Inicio;
-  const fechaFinal=req.body.Final;
-  const resultado=await pelicula.find({$and:[{Año_Estreno:{$gte: fechaIni}},{Año_Estreno:{$lte: fechaFinal}}]});
-  console.log(resultado);
-  res.render('consultac',{
-    resultado
-  });
-});
-/*Consulta D*/
-router.get('/consultad',async(req,res)=>{
-  const companies=await productora.find();
-  const resultado={};
-  const productora_seleccionada_string={};
-  res.render('consultad',{
-    companies,resultado,productora_seleccionada_string
-  });
-});
-router.post('/consultad',async(req,res)=>{
-  const productora_seleccionada_string={"Empresa":req.body.productora_seleccionada};
-  const companies=await productora.find();
-  const resultado=await pelicula.find({Productora:productora_seleccionada_string.Empresa});
-  res.render('consultad',{
-    companies,resultado,productora_seleccionada_string
-  });
-});
-/*Consulta E*/
-router.get('/consultae',async(req,res)=>{
-  const companies=await productora.find();
-  const cant_pelis="";
-  var json={
-    "Cant_Pelis":cant_pelis,
-  };
-  res.render('consultae',{
-    json,companies
-  });
-});
-router.post('/consultae',async(req,res)=>{
-  const productora_seleccionada_string=req.body.productora_seleccionada;
-  const companies=await productora.find();
-  const resultado=await pelicula.find({Productora:productora_seleccionada_string});
-  const cant_pelis=await pelicula.find({Productora:productora_seleccionada_string}).count();
-  var valores=[];
-  for(var i=0;i<cant_pelis;i++){
-    valores.push(resultado[i].Duracion);
-  }
-  var max=0
-  var min=0;
-  let sum = 0;
-  var avg=0;
-  if(cant_pelis>0){
-    console.log("yes");
-     max=Math.max.apply(null,valores);
-     min=Math.min.apply(null,valores);
-     sum = valores.reduce((previous, current) => current += previous);
-     avg=sum/cant_pelis;
-  }else{
-    console.log("no");
-    var max=0;
-    var min=0;
-    let avg=0;
-  };
-  var json={
-    "Productora":productora_seleccionada_string,
-    "Cant_Pelis":cant_pelis,
-    "Max":max,
-    "Min":min,
-    "Avg":avg
-  };
-  res.render('consultae',{
-    json,companies
-  });
-});
-
 module.exports=router;

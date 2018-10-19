@@ -1,0 +1,80 @@
+<%include partials/_header%>
+    <div class="container">
+      <h1 class="k2d">Atender Cita</h1>
+      <div class="row">
+        <!--FORM-->
+        <div class="col-md-7">
+          <p>Completa la información</p>
+          <div class="card">
+            <div class="card-body">
+              <form action="/adddiagnostico" method="POST">
+                <h4 class="lora">Diagnósticos</h4>
+                <div class="form-group">
+                  <input type="text" name="nombre_diagnostico" placeholder="Nombre" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="nivel_diagnostico" placeholder="Nivel" class="form-control">
+                </div>
+                <div class="form-group">
+                  <textarea name="observaciones_cita" placeholder="Observaciones" class="form-control"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin: 10px 10px">Agregar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!--TABLA-->
+        <div class="col-md-5">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Nivel</th>
+                <th>Observaciones</th>
+              </tr>
+            </thead>
+
+          </table>
+        </div>
+      </div>
+    <div class="col-md-7">
+      <p>Completa la información</p>
+      <div class="card">
+        <div class="card-body">
+          <form action="/addtratamiento" method="POST">
+            <h4 class="lora">Tratamientos</h4>
+            <div class="form-group">
+              <input type="text" name="nombre_tratamiento" placeholder="Tratamiento" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="number" name="dosis_tratamiento" placeholder="Dosis" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="number" name="dias_tratamiento" placeholder="Días" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" name="efecto secundario" placeholder="Efecto Secundario" class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin: 10px 10px">Agregar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--TABLA-->
+    <div class="col-md-5">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Dosis</th>
+            <th>Días</th>
+            <th>Efectos Secundarios</th>
+          </tr>
+        </thead>
+
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+<%include partials/_footer%>
